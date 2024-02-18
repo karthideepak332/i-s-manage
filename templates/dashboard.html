@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color:(left, #003366, #004080, #0059b3, #0073e6);
+              /* Light gray background color */
+            color: left, #003366, #004080, #0059b3, #0073e6; /* Dark color for text */
+        };
+        .navbar {
+            background-color: #343a40 !important; /* Dark background color for navbar */
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #ffffff !important; /* White color for navbar text */
+        }
+        .navbar-brand:hover, .navbar-nav .nav-link:hover {
+            color: #f8f9fa !important; /* Hover color for navbar text */
+        }
+        .logout-btn {
+            background-color: #d0d4d4; /* Red color for logout button */
+            border-color: #9a656a; /* Red border color for logout button */
+        }
+        .logout-btn:hover {
+            background-color: #c82333; /* Darker red color on hover for logout button */
+            border-color: #342b2c; /* Darker red border color on hover for logout button */
+        }
+        .card-header {
+            background-color: #343a40; /* Dark background color for card headers */
+            color: #ffffff; /* White color for card headers */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Om mills</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownForms" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Forms
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownForms">
+                        <a class="dropdown-item" href="production_form">Production</a>
+                        <a class="dropdown-item" href="sales_order_form">Sales Order</a>
+                        <a class="dropdown-item" href="#">Another Form</a>
+                        <a class="dropdown-item" href="#">Another Form</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">More Forms</a>
+                        <a class="dropdown-item" href="#">More Forms</a>
+                        <a class="dropdown-item" href="#">More Forms</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownReport" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Report
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownReport">
+                        <a class="dropdown-item" href="/generate_report"> production-Report</a>
+                        <a class="dropdown-item" href="#">Another Report</a>
+                        <a class="dropdown-item" href="#">Another Report</a>
+                        <a class="dropdown-item" href="#">Another Report</a>
+                      <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">More Reports</a>
+                        <a class="dropdown-item" href="#">More Reports</a>
+                        <a class="dropdown-item" href="#">More Reports</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <a class="btn btn-outline-danger my-2 my-sm-0 logout-btn" href="/logout">Logout</a>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container-fluid mt-4">
+        <h1 style="color: #253a50; text-align: center;">Dashboard</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        
+                        <div class="card-header bg-dark">
+                            Production 
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ num_productions }}</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">Card 2 Title</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text to describe the data.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">Card 3 Title</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text to describe the data.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Bootstrap and JavaScript libraries -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

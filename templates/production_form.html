@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Production Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .form-container {
+            background-color: rgb(42, 121, 217);
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .submit-btn {
+            background-color: #007bff; /* Blue color */
+            border-color: #007bff; /* Blue color */
+            color: white; /* Text color */
+        }
+        .submit-btn:hover {
+            background-color: #873898; /* Darker blue color */
+            border-color: #7d55bd; /* Darker blue color */
+        }
+    </style>
+</head>
+<body style=background-image:url({{ url_for ('static', filename='bgimage.jpg')}}); >
+    
+    <div>{{ message }}</div>
+    <div class="container form-container">
+        <h1>Production Information Form</h1>
+        <form id="productionForm" action="/production_form" method="POST">
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" class="form-control" id="date" name="date">
+            </div>
+            <div class="form-group">
+                <label for="order_number">Order Number:</label>
+                <input type="text" class="form-control" id="order_number" name="order_number">
+            </div>
+            <div class="form-group">
+                <label for="product_type">Product Type:</label>
+                <input type="text" class="form-control" id="product_type" name="product_type">
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity:</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="quantity" name="quantity">
+                    <div class="input-group-append">
+                        <select class="form-control" id="quantity_unit" name="quantity_unit">
+                            <option value="kg">kg</option>
+                            <option value="gm">gm</option>
+                            <!-- Add more unit options as needed -->
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="machine">Machine:</label>
+                <input type="text" class="form-control" id="machine" name="machine">
+            </div>
+            <div class="form-group">
+                <label for="shift">Shift:</label>
+                <select class="form-control" id="shift" name="shift">
+                    <option value="morning">Morning</option>
+                    <option value="afternoon">Afternoon</option>
+                    <option value="night">Night</option>
+                </select>
+            </div>
+            <button type="submit" class="btn submit-btn">Submit</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

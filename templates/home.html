@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login/signup</title>
+    <!-- Include Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <script src="{{ url_for('static', filename='home.js') }}"></script>
+    <style>
+        .field {
+            position: relative;
+        }
+        .eye-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            background: none;
+            border: none;
+            outline: none;
+        }
+        .eye-icon i {
+            color: #888;
+        }
+        /* Style for modal */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            padding-top: 60px;
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; /* 5% from the top, centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="title-text">
+        <div class="title login">Login Form</div>
+        <div class="title signup">Signup Form</div>
+    </div>
+    <div class="space"></div>
+ {% if error %}
+<div class="error-message">{{ error }}</div>
+{% endif %}
+{% if message %}
+<div class="success-message">{{ message }}</div>
+{% endif %}
+<div class="form-container">
+        <div class="slide-controls">
+            <input type="radio" name="slide" id="login" checked>
+            <input type="radio" name="slide" id="signup">
+            <label for="login" class="slide login">Login</label>
+            <label for="signup" class="slide signup">Signup</label>
+            <div class="slider-tab"></div>
+        </div>
+        <div class="form-inner">
+            <form action="/login" class="login" method="POST">
+                <div class="field">
+                    <input type="text" placeholder="Email Address" name="email" required>
+                </div>
+                <div class="field">
+                    <input type="password" placeholder="Password" name="password" id="loginPassword" required>
+                    <!-- Eye icon button for showing/hiding password -->
+                    <button type="button" class="eye-icon" onclick="togglePasswordVisibility('loginPassword')"><i class="fas fa-eye"></i></button>
+                </div>
+                <div class="pass-link"><a href="/forgot-password">Forgot password?</a></div>
+                <div class="field btn">
+                    <div class="btn-layer"></div>
+                    <input type="submit" value="Login">
+                </div>
+                <div class="signup-link">Not a member? <a href="#" class="signup-btn">Signup now</a></div>
+            </form>
+            <form action="/signup" class="signup" method="POST">
+               <form id="signup" onsubmit="event.preventDefault(); signup();">
+                <div class="field">
+                    <input type="text" placeholder="Username" name="username" required>
+                </div>
+                <div class="field">
+                    <input type="text" placeholder="Email Address" name="email" required>
+                </div>
+                <div class="field">
+                    <input type="password" placeholder="Password" name="password" id="signupPassword" required>
+                    <!-- Eye icon button for showing/hiding password -->
+                    <button type="button" class="eye-icon" onclick="togglePasswordVisibility('signupPassword')"><i class="fas fa-eye"></i></button>
+                </div>
+                <div class="field">
+                    <input type="password" placeholder="Confirm password" name="confirm_password" id="confirm_password" required>
+                    <!-- Eye icon button for showing/hiding password -->
+                    <button type="button" class="eye-icon" onclick="togglePasswordVisibility('confirm_password')"><i class="fas fa-eye"></i></button>
+                </div>
+                <div class="field btn">
+                    <div class="btn-layer"></div>
+                    <input type="submit" value="Signup">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="modalMessage"></p>
+    </div>
+</div>
+
+<!-- Include Font Awesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+<script>
+    function togglePasswordVisibility(inputId) {
+        var input = document.getElementById(inputId);
+        var icon = document.querySelector('#' + inputId + ' + .eye-icon i');
+
+        if (input.type === "password") {
+            input.type = "text";
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            input.type = "password";
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    }
+</script>
+
+</body>
+</html>
